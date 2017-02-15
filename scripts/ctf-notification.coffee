@@ -29,6 +29,8 @@ module.exports = (robot) ->
         message = "Title: #{title}\nURL: #{url}\nctftime_url: #{ctftime_url}\nFormat: #{format}\nLocation: #{location}\nDuration: hours #{duration_hours}, days #{duration_days}"
 
         d = new Date("#{start}")
+        # UTC -> JST
+        d.setTime(d.getTime() + 9 * 60 * 60 * 1000)
 
         year  = d.getFullYear()     # 年（西暦）
         month = d.getMonth() + 1    # 月
@@ -39,7 +41,7 @@ module.exports = (robot) ->
         sec   = d.getSeconds()      # 秒
         ms    = d.getMilliseconds() # ミリ秒（1000分の1秒）
 
-        message += "\nDate: #{year}年#{month}月#{date}日(#{day}) #{hour}時#{min}分#{sec}秒"
+        message += "\nDate: #{year}年#{month}月#{date}日(#{day}) #{hour}時#{min}分#{sec}秒 (JST)"
         message += "\n\nお前はよぉ！自分で探すってことをできねぇのかよ！？"
 
         msg.send message
