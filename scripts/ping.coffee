@@ -25,7 +25,7 @@ shuffle = (arr) ->
 
 module.exports = (robot) ->
   robot.respond /PING$/i, (msg) ->
-    msg.send "PONG"
+    msg.send "あぁ？"
 
   robot.respond /.*いる[?？]\s*$/i, (msg) ->
     shuffle message
@@ -33,9 +33,6 @@ module.exports = (robot) ->
 
   robot.respond /ADAPTER$/i, (msg) ->
     msg.send robot.adapterName
-
-  robot.respond /ECHO (.*)$/i, (msg) ->
-    msg.send msg.match[1]
 
   robot.respond /TIME$/i, (msg) ->
     msg.send "#{moment().format('YYYY年MM月DD日 H時mm分')}だよ"
