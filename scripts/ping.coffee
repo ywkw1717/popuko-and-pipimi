@@ -14,7 +14,6 @@ message = [
 
 # The number of popute URL
 popute_url = ["01", "02", "03", "15"]
-popute_url_backword = [13023, 13161, 13309, 15107]
 
 shuffle = (arr) ->
   i = arr.length
@@ -50,7 +49,7 @@ module.exports = (robot) ->
   robot.hear /.*おはよ(?:う|〜||ー)/i, (msg) ->
     msg.send "今日もウキウキコーディング！"
 
-  robot.hear /.*next (?:ej_mtg|EJ_MTG|EJ_mtg|)/i, (msg) ->
+  robot.hear /.*next(?: ej_mtg)/i, (msg) ->
     msg.send "次はない"
 
   robot.hear /.*つら(?:い|み)/i, (msg) ->
