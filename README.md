@@ -1,2 +1,2 @@
-# popuko_and_pipimi
+# popuko-and-pipimi
 The crazy bot of Popuko and Pipimi!!!!! HAHAHAHA!!!!
