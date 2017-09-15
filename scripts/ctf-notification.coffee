@@ -64,9 +64,9 @@ module.exports = (robot) ->
 
           message += "\nDate: #{year}年#{month}月#{date}日(#{day}) #{hour}時#{min}分#{sec}秒 (JST)"
           message += "\n\nお前はよぉ"
-          message += new Array(i+1).join("！")
+          message += new Array(i+2).join("！")
           message += "自分で探すってことをできねぇのかよ"
-          message += new Array(i+1).join("！？")
+          message += new Array(i+2).join("！？")
           message += "\n\n"
 
         msg.send message
