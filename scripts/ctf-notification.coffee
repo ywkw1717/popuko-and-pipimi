@@ -33,6 +33,8 @@ module.exports = (robot) ->
       start:timestamp
       })
       .get() (err, res, body) ->
+        message = ""
+
         for i in [0..get_num-1]
           json = JSON.parse(body)[i.toString(10)]
 
@@ -45,7 +47,7 @@ module.exports = (robot) ->
           duration_days  = json["duration"]["days"]
           start          = json["start"]
 
-          message = "Title: #{title}\nURL: #{url}\nctftime_url: #{ctftime_url}\nFormat: #{format}\nLocation: #{location}\nDuration: hours #{duration_hours}, days #{duration_days}"
+          message += "Title: #{title}\nURL: #{url}\nctftime_url: #{ctftime_url}\nFormat: #{format}\nLocation: #{location}\nDuration: hours #{duration_hours}, days #{duration_days}"
 
           d = new Date("#{start}")
           # UTC -> JST
@@ -65,6 +67,6 @@ module.exports = (robot) ->
           message += new Array(i+1).join("！")
           message += "自分で探すってことをできねぇのかよ"
           message += new Array(i+1).join("！？")
-          message += "\n"
+          message += "\n\n"
 
-          msg.send message
+        msg.send message
