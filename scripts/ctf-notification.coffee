@@ -7,8 +7,11 @@
 days = ["日", "月", "火", "水", "木", "金", "土"]
 
 module.exports = (robot) ->
-  robot.hear /(n|N)ext ctf (\d+)/i, (msg) ->
-    number = msg.match[1].trim()
+  robot.hear /(n|N)ext ctf ?(\d+)?$/i, (msg) ->
+    try
+      number = msg.match[2].trim()
+    catch
+      get_num = 1
 
     if `number == null`
       get_num = 1
@@ -30,9 +33,8 @@ module.exports = (robot) ->
       start:timestamp
       })
       .get() (err, res, body) ->
-
         for i in [0..get_num-1]
-          json = JSON.parse(body)[get_num.toString(10)]
+          json = JSON.parse(body)[i.toString(10)]
 
           title          = json["title"]
           url            = json["url"]
@@ -59,6 +61,10 @@ module.exports = (robot) ->
           ms    = d.getMilliseconds() # ミリ秒（1000分の1秒）
 
           message += "\nDate: #{year}年#{month}月#{date}日(#{day}) #{hour}時#{min}分#{sec}秒 (JST)"
-          message += "\n\nお前はよぉ！自分で探すってことをできねぇのかよ！？"
+          message += "\n\nお前はよぉ"
+          message += new Array(i+1).join("！")
+          message += "自分で探すってことをできねぇのかよ"
+          message += new Array(i+1).join("！？")
+          message += "\n"
 
           msg.send message
