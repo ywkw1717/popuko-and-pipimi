@@ -7,7 +7,7 @@
 days = ["日", "月", "火", "水", "木", "金", "土"]
 
 module.exports = (robot) ->
-  robot.hear /(n|N)ext ctf ?(\d+)?/i, (msg) ->
+  robot.hear /(n|N)ext ctf (\d+)/i, (msg) ->
     number = msg.match[1].trim()
 
     if `number == null`
